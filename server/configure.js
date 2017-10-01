@@ -19,22 +19,6 @@ module.exports = function(app){
   if('development' === app.get('env')){
     app.use(errorHandler());
   }
-  app.engine(
-    'handlebars', exphbs.create({
-      defaultLayout: 'main',//디폴트 레이아웃명.handlebars 가 호출되도록 설정
-      //layoutsDir : The string name or path of a template in the layoutsDir to use as the default layout
-      //디폴트 레이아웃의 위치 설정
-      layoutsDir: app.get('views') + '/layouts',// server.js에서 app.set('views')를 설정 해 둠
-      partialsDir: [app.get('views') + '/partials'],
-      helpers:{
-        timeago: function(timestamp){
-          return moment(timestamp).startOf('minute').fromNow();
-        }
-      }
-    }).engine);
-
-    app.set('view engine', 'handlebars');
-
-
+  
   routes(app);
 };

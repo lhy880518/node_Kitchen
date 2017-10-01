@@ -1,0 +1,29 @@
+<section>
+  <form name="boardForm" ng-submit="submitBoard(board)">
+    <div class="container">
+      <!--글쓰기 디자인 출처 http://the3.tistory.com/53-->
+      <div class="form-group">
+        <h3><label for="Title">제목</label></h3>
+        <input type="text" class="form-control" required ng-model="board.title" id="title" name = "title" placeholder="제목을 입력해 주세요.">
+      </div>
+
+      <div class="form-group">
+        <h3><label for="content">내용</label></h3>
+        <textarea class="form-control" rows="5" required ng-model="board.content" id="content" name="content" placeholder="내용을 입력해 주세요."></textarea>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-xs-2 pull-right">
+          <label for="Title">작성자</label>
+          <input type="text" class="form-control" required ng-model="board.author" id="author" name="author" size="10">
+        </div>
+      </div>
+
+      <hr></hr>
+      <div class="text-center">
+        <button class="btn btn-default" type="submit">작성완료</button>
+        <a class="btn btn-default" href="#/board_list">목록으로</a>
+      </div>
+    </div>
+  </form>
+</section>

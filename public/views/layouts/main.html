@@ -7,16 +7,16 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../public/img/N_K.ico">
+    <link rel="icon" href="../public/img/N_K.ico">
 
     <title>Node_Kitchen</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../public/js/ie-emulation-modes-warning.js"></script>
+    <script src="../public/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -25,11 +25,11 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="../../public/css/private.css" rel="stylesheet">
+    <link href="../public/css/private.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->
-  <body>
+  <body ng-app = "app">
     <div class="navbar-wrapper">
       <div class="container">
 
@@ -46,25 +46,25 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="#">조리실소개</a></li>
+                <li><a href="#/home">조리실소개</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">요리재료<span class="caret"></span></a>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">요리재료<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">MongoDB</a></li>
+                    <li><a href="#/mongodb_detail">MongoDB</a></li>
                     <li><a href="#">Express</a></li>
                     <li><a href="#">AngularJS</a></li>
                     <li><a href="#">NodeJS</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">요리순서<span class="caret"></span></a>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">요리순서<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="#">뼈대</a></li>
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
                   </ul>
                 </li>
-                <li><a href="#board">게시판</a></li>
+                <li><a href="#/board_list">게시판</a></li>
               </ul>
             </div>
           </div>
@@ -97,20 +97,24 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+    <div class="container marketing" ng-view>
       <!-- START THE FEATURETTES -->
-      {{{body}}}
+
     </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../public/js/jquery.min.js"></script>
-    <script src="../../public/js/bootstrap.min.js"></script>
+
+    <script src="../public/js/jquery.min.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../public/js/holder.js"></script>
+    <script src="../public/js/holder.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../public/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../public/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../public/js/angular.min.js"></script>
+    <script src="../public/js/angular-route.min.js"></script>
+    <script src="../public/js/angular_kitchen.js"></script>
   </body>
 </html>
