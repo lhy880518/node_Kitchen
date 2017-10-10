@@ -1,0 +1,50 @@
+//파일위치 : /Server.js
+//포트 3300으로 서버가 구동되면 MongoDB를 연동 시킵니다.
+mongoose.connect('mongodb://localhost/lee_board');
+
+//파일위치 : /models/board.js
+//Mongoose는 MongoDB 기반 ODM(Object Data Mapping) Node.JS 전용 라이브러리입니다
+//ODM은 데이터베이스와 객체지향 프로그래밍 언어 사이 호환되지 않는
+//데이터를 변환하는 프로그래밍 기법입니다.
+//mongoose.model을 사용하여 모델을 선언
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var BoardSchema = new Schema({
+  num:{ type: Number,default: 0 },
+  title:{ type: String },
+  author:{ type: String },
+  content:{ type: String },
+  password:{ type: String },
+  created:{ type: Date, default:Date.now },
+  views:{ type: Number, default: 0 }
+});
+
+module.exports = mongoose.model('boards', BoardSchema);
+
+//파일위치 : /server/routes.js
+//아래와 같이 update,findOne,find를 사용
+var models = require('../models');
+models.board.update(req.body, function(err){
+  if(err) res.send(err);
+  res.send();
+});
+
+models.board.findOne({_id : _id},function(err, board){
+  console.log('models.board.findOne');
+  if(err) res.send(err);
+
+  if(board){
+    console.log('board.views='+board.views);
+    board.views = board.views +1;
+    board.save();
+  }
+
+  console.log('board='+board);
+  res.send(board);
+});
+
+models.board.find(function(err, boards){
+  if(err) res.send(err);
+  res.send(boards);
+});

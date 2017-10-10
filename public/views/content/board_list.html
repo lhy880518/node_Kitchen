@@ -16,7 +16,7 @@
           <th>{{board.num}}</th>
           <th><a href="#/board_mod/{{board._id}}">{{board.title}}</a></th>
           <th>{{board.author}}</th>
-          <th>{{board.created}}</th>
+          <th>{{board.created | date:'yyyy-MM-dd'}}</th>
           <th>{{board.views}}</th>
         </tr>
       </tbody>
@@ -27,10 +27,7 @@
 
     <div class="text-center">
       <ul class="pagination">
-        <li><a href="">1</a></li>
-        <li><a href="">2</a></li>
-        <li><a href="">3</a></li>
-        <li><a href="">4</a></li>
+        <li ng-repeat="page in pageidx"><a href="">{{$index+1}}</a></li>
       </ul>
     </div>
   </div>
