@@ -4,90 +4,13 @@
     <p class="lead" >
     </p>
     <h3><strong>1. 소개</strong></h3>
-    <p style="text-indent: 15px;">MongoDB는 C++로 작성된 오픈소스 문서지향(<span style="color: #ff9900;">Document-Oriented</span>) 적 Cross-platform 데이터베이스이며, 뛰어난 확장성과 성능을 자랑합니다. 또한, 현존하는<span style="color: #ff9900;"> NoSQL</span> 데이터베이스 중 인지도 1위를 유지하고있습니다.</p>
-    <p>&nbsp;</p>
-    <h4 style="text-indent: 15px;">* NoSQL?</h4>
-    <p style="text-indent: 15px;">흔히 NoSQL이라고 해서 아, SQL이 없는 데이터베이스구나! 라고 생각 할 수도 있겠지만, 진짜 의미는 Not Only SQL 입니다. 기존의 RDBMS의 한계를 극복하기 위해 만들어진 새로운 형태의 데이터저장소 입니다. 관계형 DB가 아니므로, RDMS처럼 고정된 스키마 및 JOIN 이 존재하지 않습니다.</p>
-    <p>&nbsp;</p>
-    <h4 style="text-indent: 15px;">* Document?</h4>
-    <p style="text-indent: 15px;">Document Oriented 데이터베이스라는데..  여기서 말하는 <span style="color: #ff9900;">Document</span>가 뭘까요? 문서? 이게 그냥 &#8216;문서&#8217; 로 번역해버리면 조금은 애매합니다. 문서라고 하면 보통 워드/엑셀에 사용되는 그런 문서가 떠오르는데요, 그것과는 다릅니다. Document는 RDMS의 record 와 비슷한 개념인데요, 이의 데이터 구조는 한개이상의 <span style="color: #ff9900;">key-value pair</span> 으로 이뤄져있습니다. MongoDB 샘플 Document를 확인 해 볼까요?</p>
-    <pre class="lang:js decode:true">{
-        "_id": ObjectId("5099803df3f4948bd2f98391"),
-        "username": "velopert",
-        "name": { first: "M.J.", last: "Kim" }
-    }
-    </pre>
-    <p style="text-indent: 15px;">여기서 _id, username, name 은 <span style="color: #ff9900;">key</span> 이고 그 오른쪽에 있는 값들은 <span style="color: #ff9900;">value</span> 입니다.</p>
-    <p style="text-indent: 15px;"><span style="color: #ff9900;">_id</span> 는 12bytes의 hexadecimal 값으로서, 각 document의 유일함(uniqueness)을 제공합니다.<br />
-    이 값의 첫 4bytes 는현재 timestamp, 다음 3bytes는 machine id, 다음 2bytes는 MongoDB 서버의 프로세스id, 마지막 3bytes는 순차번호입니다 추가될때마다 값이 높아진다는거지요.</p>
-    <p style="text-indent: 15px;">Document는 동적(dynamic)의 schema 를 갖고있습니다. 같은 Collection 안에 있는 Document 끼리 다른 schema 를 갖고 있을 수 있는데요, 쉽게 말하면 서로 다른 데이터 (즉 다른 key) 들을 가지고 있을 수 있습니다.</p>
-    <p>&nbsp;</p>
-    <h4 style="text-indent: 15px;">* Collection?</h4>
-    <p style="text-indent: 15px;"><span style="color: #ff9900;">Collection</span>은 MongoDB Document의 그룹입니다. Document들이 Collection내부에 위치하고 있습니다. RDMS의 table과 비슷한 개념입니다만 RDMS와 달리 schema를 따로 가지고 있지않습니다. Document 부분설명에 나와있듯이 각 Document들이 동적인 schema를 가지고 있으니까요</p>
-    <p>&nbsp;</p>
-    <h4 style="text-indent: 15px;">* Database?</h4>
-    <p style="text-indent: 15px;"><span style="color: #ff9900;">Database</span>는 Collection들의 물리적인 컨테이너입니다. 각 Database는 파일시스템에 여러파일들로 저장됩니다.</p>
-    <p>&nbsp;</p>
-    <h4 style="text-indent: 15px;">* RDMS와의 비교</h4>
-    <p style="text-indent: 15px;">RDMS 라는 키워드가 생소하신분들을 위하여 먼저 이에 대한 간단한 설명을 드리겠습니다. <strong>R</strong>elational <strong>D</strong>atabase <strong>M</strong>anagement <strong>S</strong>ystem (관계형 데이터베이스 관리 시스템) 은 행과  열로 된 2차원의 table로 데이터를 관리하는 데이터베이스 시스템입니다. Mysql, Oracle Database, DB2 등 시스템들이 RDMS에 속하죠.</p>
-    <table style="height: 290px;" width="499">
-    <tbody>
-    <tr>
-    <td style="text-align: left;"><strong>RDBMS</strong></td>
-    <td style="text-align: left;"><strong>MongoDB</strong></td>
-    </tr>
-    <tr>
-    <td>Database</td>
-    <td>Database</td>
-    </tr>
-    <tr>
-    <td>Table</td>
-    <td>Collection</td>
-    </tr>
-    <tr>
-    <td>Tuple / Row</td>
-    <td>Document</td>
-    </tr>
-    <tr>
-    <td>Column</td>
-    <td>Key / Field</td>
-    </tr>
-    <tr>
-    <td>Table Join</td>
-    <td>Embedded Documents</td>
-    </tr>
-    <tr>
-    <td>Primary Key</td>
-    <td>Primary Key (_id)</td>
-    </tr>
-    <tr>
-    <td style="text-align: center;" colspan="2"><strong>Database Server &amp; Client</strong></td>
-    </tr>
-    <tr>
-    <td>mysqld</td>
-    <td>mongod</td>
-    </tr>
-    <tr>
-    <td>mysql</td>
-    <td style="text-align: left;">mongo</td>
-    </tr>
-    </tbody>
-    </table>
-    <p>&nbsp;</p>
-    <h4 style="text-indent: 15px;">* 장점</h4>
-    <ul>
-    <li>Schema-less (Schema가 없다. 같은 Collection 안에 있을지라도 다른 Schema를 가지고 있을 수 있다)</li>
-    <li>각 객체의 구조가 뚜렷하다</li>
-    <li>복잡한 JOIN 이 없다.</li>
-    <li>Deep Query ability (문서지향적 Query Language 를 사용하여 SQL 만큼 강력한 Query 성능을 제공한다.</li>
-    <li>어플리케이션에서 사용되는 객체를 데이터베이스에 추가 할 때 Conversion / Mapping이 불필요하다.</li>
-    </ul>
-    <a href="https://velopert.com/436"> 위 자료는 모두 https://velopert.com/436의 자료 입니다.</a>
+    <p style="text-indent: 15px;">Express는 NodeJS상에서 동작하는 대표적 <span style="color: #ff9900;">웹 개발 프레임워크</span> 이다.</p>
+    <p style="text-indent: 15px;">이 페이지를 구성할때는 대표적 기능인 <span style="color: #ff9900;">웹서버 구동 및 라우팅 기능을</span> 사용한다.</p>
     <p>&nbsp;</p>
     <h3><strong>2. 선언</strong></h3>
-    <p><img src="/public/img/mongoDB_use.png" ></p>
+    <p><img src="/public/img/Express_use.png" ></p>
     <p>&nbsp;</p>
     <h3><strong>3. 사용</strong></h3>
-    <p><img src="/public/img/mongoDB_use2.png" ></p>
+    <p><img src="/public/img/Router_use.png" ></p>
   </div>
 </div>

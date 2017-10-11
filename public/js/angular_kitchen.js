@@ -15,6 +15,14 @@ app.config(function($routeProvider, $locationProvider){
     templateUrl: './public/views/content/express_detail.html',
     controller:'ExpressDetailController'
   })
+  .when('/nodejs_detail',{
+    templateUrl: './public/views/content/nodejs_detail.html',
+    controller:'NodejsDetailController'
+  })
+  .when('/angular-detail',{
+    templateUrl: './public/views/content/angular_detail.html',
+    controller:'AngularDetailController'
+  })
   .when('/board_list',{
     templateUrl: './public/views/content/board_list.html',
     controller:'BoardController'
@@ -44,8 +52,18 @@ app.controller('MongoDetailController', function($scope, $http){
   });
 });
 
+app.controller('NodejsDetailController', function($scope, $http){
+  $http.get('/nodejs_detail').then(function(data){
+  });
+});
+
 app.controller('ExpressDetailController', function($scope, $http){
   $http.get('/express_detail').then(function(data){
+  });
+});
+
+app.controller('AngularDetailController', function($scope, $http){
+  $http.get('/angular_detail').then(function(data){
   });
 });
 
@@ -53,14 +71,6 @@ app.controller('BoardController', function($scope, $http){
   $http.get('/board_list').then(function(data){
     $scope.boards = data.data;
     var pageindex = Math.ceil($scope.boards.length/5);
-    var page = [{id : 0},{id : 0},{id : 0}];
-    page.push(1);
-    page.push(2);
-    var obj = {};
-    obj.push(1);
-    obj.push(2);
-    obj.push(3);
-    console.log('obj='+obj);
     $scope.pageidx = page;
   });
 });
@@ -80,7 +90,7 @@ app.controller('ModController', function($scope, $routeParams, $http, $location)
   });
 
   $scope.submitBoardMod = function(board){
-    $http.get('/board_mod/'+$routeParams._id).then(function(data){
+    $http.get('/board_get/'+$routeParams._id).then(function(data){
       if((data.data.title !== $scope.board.title || data.data.content !== $scope.board.content) && data.data.password !== $scope.board.password){
          alert('올바른 비밀번호를 입력 바랍니다.');
       }else if((data.data.title !== $scope.board.title || data.data.content !== $scope.board.content) && data.data.password === $scope.board.password){

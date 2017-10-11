@@ -10,7 +10,8 @@ var MongoClient = require('mongodb').MongoClient;
 //프로미스를 활용하기 위해 return new Promise로 프로미스 객체 생성 및 resolve를 활용한 리턴값 넘기기
 function getNextSequence(name) {
   return new Promise(function(resolve, reject){
-    MongoClient.connect('mongodb://localhost/lee_board', function(err, db) {
+    //MongoClient.connect('mongodb://localhost/lee_board', function(err, db) {
+    MongoClient.connect('mongodb://lhy880518:7164gusdyd@ds113915.mlab.com:13915/lee_board', function(err, db) {
       db.collection('counters').findAndModify(
         { "_id": name },
         [],
@@ -40,6 +41,14 @@ module.exports = function(app){
 
   router.get('/express_detail', function(req, res){
     res.send('express_detail');
+  });
+
+  router.get('/nodejs_detail', function(req, res){
+    res.send('nodejs_detail');
+  });
+
+  router.get('/angular_detail', function(req, res){
+    res.send('angular_detail');
   });
 
   //게시판 첫 화면에서는 글의 목록 및 쓰기 버튼이 존재
@@ -73,22 +82,31 @@ module.exports = function(app){
     var _id  = req.params._id;
 
     models.board.findOne({_id : _id},function(err, board){
-      console.log('models.board.findOne');
       if(err) res.send(err);
-
       if(board){
         console.log('board.views='+board.views);
         board.views = board.views +1;
         board.save();
       }
 
-      console.log('board='+board);
+      console.log('board_mod='+board);
+      res.send(board);
+    });
+  });
+
+  router.get('/board_get/:_id', function(req, res){
+    var _id  = req.params._id;
+
+    models.board.findOne({_id : _id},function(err, board){
+      if(err) res.send(err);
+      console.log('board_get='+board);
       res.send(board);
     });
   });
 
   router.put('/board', function(req, res){
-    models.board.update(req.body, function(err){
+    var boardModel = new models.board(req.body);
+    models.board.update({ _id: boardModel._id }, { $set: boardModel },function(err){
       if(err) res.send(err);
       res.send();
     });

@@ -1,0 +1,57 @@
+//파일위치 : /Server.js
+//웹서버 구동 : PORT 및 Views폴더를 설정하고 웹서버를 구동합니다.
+var express = require('express');
+var app = express();
+app.set('port', process.env.PORT || 3300);
+app.set('views', __dirname + '/public/views');
+var server = app.listen(app.get('port'), function(){
+  console.log('Server Connection Success');
+});
+
+//파일위치 : /server/configure.js
+//웹페이지에서 사용할 모듈을 선언한다.
+module.exports = function(app){
+  app.use(morgan('dev'));
+  app.use(bodyParser());
+  app.use(methodOverride());
+  app.use('/public/', express.static(path.join(__dirname, '../public')));
+
+  if('development' === app.get('env')){
+    app.use(errorHandler());
+  }
+
+  routes(app);
+};
+
+//파일위치 : /server/routes.js
+//라우팅 처리를 위한 라우터를 선언한다.
+var express = require('express');
+var router = express.Router();
+
+//파일위치 : /server/routes.js
+//실제 라우터 사용 예시
+router.get('/', function(req, res){
+  res.sendFile(path.join(__dirname, '../public/views/layouts/')+'main.html');
+});
+
+router.get('/mongodb_detail', function(req, res){
+  res.send('mongodb_detail');
+});
+
+router.post('/board/create', function(req, res){
+    var boardModel = new models.board(req.body);
+});
+
+router.get('/board_mod/:_id', function(req, res){
+  var _id  = req.params._id;
+
+});
+
+router.put('/board', function(req, res){
+  models.board.update(req.body, function(err){
+    if(err) res.send(err);
+    res.send();
+  });
+});
+
+app.use(router);

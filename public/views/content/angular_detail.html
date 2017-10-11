@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <h1>AngularJS설명</h1>
+    <p class="lead" >
+    </p>
+    <h3><strong>1. 소개</strong></h3>
+    <p style="text-indent: 15px;">AngularJS는 자바스크립트 기반의 오픈 소스 프론트엔드 <span style="color: #ff9900;">웹 애플리케이션 프레임워크</span>의 하나이다.</p>
+    <p style="text-indent: 15px;">싱글 페이지 애플리케이션 개발 중에 마주치는 여러 문제들을 해결하기 위해 개발되었으며 주로 구글과 개별 커뮤니티, 여러 회사에 의해 유지보수되고 있다.</p>
+    <p style="text-indent: 15px;">클라이언트 사이드의 모델-뷰-컨트롤러(MVC)와 모델-뷰-뷰모델(MVVM) 구조를 위한 프레임워크를 제공함으로써 이러한 애플리케이션들의 개발 및 테스트를 단순화하는 것이 목적이다.</p>
+    <p>&nbsp;</p>
+    <h3><strong>2. 기본예시</strong></h3>
+    <p>
+      <input type="text" ng-model="inputTtest"></input>={{inputTtest}}
+    </p>
+    <pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;script </span><span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text/javascript&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #008800; font-weight: bold">var</span> app <span style="color: #333333">=</span> angular.module(<span style="background-color: #fff0f0">&#39;app&#39;</span>, [<span style="background-color: #fff0f0">&#39;ngRoute&#39;</span>]);
+<span style="color: #007700">&lt;/script&gt;</span>
+<span style="color: #007700">&lt;body</span> <span style="color: #0000CC">ng-app=</span><span style="background-color: #fff0f0">&quot;app&quot;</span><span style="color: #007700">&gt;</span>
+<span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">ng-model=</span><span style="background-color: #fff0f0">&quot;inputTtest&quot;</span><span style="color: #007700">&gt;&lt;/input&gt;</span>={ {inputTtest} }
+//위 코드에서 { {inputTtest} }사이의 빈칸을 제거 합니다.
+//위와 같이 var app = angular.module('app', ['ngRoute']);을 통하여 angular module을 설정하고
+//ng-app에서 선언한 app을 사용한 후 데이터 바인딩을 실시한다.
+<span style="color: #007700">&lt;/body&gt;</span>
+</pre>
+  </div>
+</div>
