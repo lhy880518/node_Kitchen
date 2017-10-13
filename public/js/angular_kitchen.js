@@ -26,6 +26,9 @@ app.config(function($routeProvider, $locationProvider){
   .when('/algolithm_ceasar',{
     templateUrl: './public/views/content/algolithm/algolithm_ceasar.html'
   })
+  .when('/algolithm_nextnum',{
+    templateUrl: './public/views/content/algolithm/algolithm_nextnum.html'
+  })
   .when('/board_list',{
     templateUrl: './public/views/content/board/board_list.html',
     controller:'BoardController'

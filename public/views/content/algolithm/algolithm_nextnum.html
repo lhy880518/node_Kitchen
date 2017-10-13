@@ -1,0 +1,51 @@
+<div>
+  <div>
+    <h1>1. 시저암호</h1>
+    <p class="lead" >
+    </p>
+    <h3><strong>1. 문제(출처 : <a href="https://programmers.co.kr/learn/challenge_codes/174">https://programmers.co.kr/learn/challenge_codes/174</a>)</strong></h3>
+    <p style="text-indent: 15px;">어떤 수 N(1≤N≤1,000,000) 이 주어졌을 때, N의 다음 큰 숫자는 다음과 같습니다.</p>
+    <li style="text-indent: 15px;">N의 다음 큰 숫자는 N을 2진수로 바꾸었을 때의 1의 개수와 같은 개수로 이루어진 수입니다.</li>
+    <li style="text-indent: 15px;">1번째 조건을 만족하는 숫자들 중 N보다 큰 수 중에서 가장 작은 숫자를 찾아야 합니다.</li>
+    <p style="text-indent: 15px;">예를 들어, 78을 2진수로 바꾸면 1001110 이며, 78의 다음 큰 숫자는 83으로 2진수는 1010011 입니다.</p>
+    <p style="text-indent: 15px;">N이 주어질 때, N의 다음 큰 숫자를 찾는 nextBigNumber 함수를 완성하세요.</p>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">function</span> nextBigNumber(n){
+	<span style="color: #008800; font-weight: bold">var</span> answer <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+
+	<span style="color: #008800; font-weight: bold">return</span> answer;
+}
+
+<span style="color: #888888">//아래 코드는 테스트를 위한 코드입니다.</span>
+console.log(nextBigNumber(<span style="color: #0000DD; font-weight: bold">78</span>));
+</pre></div>
+
+
+    <p>&nbsp;</p>
+    <h3><strong>2. 나의 풀이</strong></h3>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">function</span> nextBigNumber(n){
+  <span style="color: #888888">//먼저 10진수를 2진수로 바꾸어 보자</span>
+  <span style="color: #888888">//console.log((n).toString(2)); 1001110</span>
+  <span style="color: #888888">//이 바꾼 2진수에서 1을 추출한다.</span>
+  <span style="color: #888888">//console.log((n).toString(2).match(/1/g)); [ &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39; ]</span>
+  <span style="color: #888888">//이 추출한 1의 갯수를 확인한다.</span>
+  <span style="color: #888888">//console.log((n).toString(2).match(/1/g).length); 4</span>
+
+	<span style="color: #008800; font-weight: bold">var</span> answer <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+  <span style="color: #008800; font-weight: bold">var</span> numflag <span style="color: #333333">=</span> n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>;
+
+  <span style="color: #008800; font-weight: bold">while</span>(((n).toString(<span style="color: #0000DD; font-weight: bold">2</span>)).match(<span style="color: #000000; background-color: #fff0ff">/1/g</span>).length <span style="color: #333333">!==</span> ((numflag).toString(<span style="color: #0000DD; font-weight: bold">2</span>)).match(<span style="color: #000000; background-color: #fff0ff">/1/g</span>).length){
+    <span style="color: #888888">//n을 1씩 늘려가면서 확인하여 반환한다.</span>
+  	numflag <span style="color: #333333">++</span>;
+  }
+  answer <span style="color: #333333">=</span> numflag;
+	<span style="color: #008800; font-weight: bold">return</span> answer;
+}
+
+<span style="color: #888888">//아래 코드는 테스트를 위한 코드입니다.</span>
+console.log(nextBigNumber(<span style="color: #0000DD; font-weight: bold">78</span>));
+</pre></div>
+
+
+
+  </div>
+</div>
