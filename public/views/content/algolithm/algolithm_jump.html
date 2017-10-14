@@ -1,0 +1,57 @@
+<div>
+  <div>
+    <h1>3. 멀리 뛰기</h1>
+    <p class="lead" >
+    </p>
+    <h3><strong>1. 문제(출처 : <a href="https://programmers.co.kr/learn/challenge_codes/33">https://programmers.co.kr/learn/challenge_codes/33</a>)</strong></h3>
+    <p style="text-indent: 15px;">효진이는 멀리 뛰기를 연습하고 있습니다. 효진이는 한번에 1칸, 또는 2칸을 뛸 수 있습니다.</p>
+    <p style="text-indent: 15px;">칸이 총 4개 있을 때, 효진이는</p>
+    <p style="text-indent: 15px;">(1칸, 1칸, 1칸, 1칸)</p>
+    <p style="text-indent: 15px;">(1칸, 2칸, 1칸)</p>
+    <p style="text-indent: 15px;">(1칸, 1칸, 2칸)</p>
+    <p style="text-indent: 15px;">(2칸, 1칸, 1칸)</p>
+    <p style="text-indent: 15px;">(2칸, 2칸)</p>
+    <p style="text-indent: 15px;">의 5가지 방법으로 맨 끝 칸에 도달할 수 있습니다.</p>
+    <p style="text-indent: 15px;">멀리뛰기에 사용될 칸의 수 n이 주어질 때, 효진이가 끝에 도달하는 방법이 몇 가지인지 출력하는 jumpCase 함수를 완성하세요.</p>
+    <p style="text-indent: 15px;">예를 들어 4가 입력된다면, 5를 반환해 주면 됩니다.</p>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">function</span> jumpCase(num) {
+	<span style="color: #008800; font-weight: bold">var</span> answer <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+
+	<span style="color: #008800; font-weight: bold">return</span> answer;
+}
+
+<span style="color: #888888">//아래는 테스트로 출력해 보기 위한 코드입니다.</span>
+console.log(jumpCase(<span style="color: #0000DD; font-weight: bold">4</span>));
+</pre></div>
+
+
+    <p>&nbsp;</p>
+    <h3><strong>2. 나의 풀이</strong></h3>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">function</span> jumpCase(num) {
+  <span style="color: #888888">//경우의 수가 어떻게 흘러가는지 봅니다.</span>
+  <span style="color: #888888">//칸이 총 1개 있을때에는 1</span>
+  <span style="color: #888888">//칸이 총 2개 있을때에는 2</span>
+  <span style="color: #888888">//칸이 총 3개 있을때에는 3</span>
+  <span style="color: #888888">//칸이 총 4개 있을때에는 5</span>
+  <span style="color: #888888">//칸이 총 5개 있을때에는 8</span>
+  <span style="color: #888888">//....</span>
+  <span style="color: #888888">//칸이 총 n개 있을때에는 n-1의 경우의 수 + n-2의 경우의 수가 됩니다.</span>
+  <span style="color: #888888">//재귀함수가 나설 차례입니다.</span>
+	<span style="color: #008800; font-weight: bold">var</span> answer <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+
+  <span style="color: #888888">//num이 2보다 작다면 num을 리턴 시킵니다.</span>
+  <span style="color: #008800; font-weight: bold">if</span>(num <span style="color: #333333">&lt;=</span><span style="color: #0000DD; font-weight: bold">2</span>){
+    <span style="color: #008800; font-weight: bold">return</span> num;
+    <span style="color: #888888">//그 외에 CASE에는 재귀 호출을 시킵니다.</span>
+  }<span style="color: #008800; font-weight: bold">else</span>{
+    answer <span style="color: #333333">+=</span> jumpCase(num<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">+</span> jumpCase(num<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">2</span>);
+  }
+	<span style="color: #008800; font-weight: bold">return</span> answer;
+}
+
+<span style="color: #888888">//아래는 테스트로 출력해 보기 위한 코드입니다.</span>
+console.log(jumpCase(<span style="color: #0000DD; font-weight: bold">5</span>));
+</pre></div>
+
+  </div>
+</div>

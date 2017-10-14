@@ -29,6 +29,9 @@ app.config(function($routeProvider, $locationProvider){
   .when('/algolithm_nextnum',{
     templateUrl: './public/views/content/algolithm/algolithm_nextnum.html'
   })
+  .when('/algolithm_jump',{
+    templateUrl: './public/views/content/algolithm/algolithm_jump.html'
+  })
   .when('/board_list',{
     templateUrl: './public/views/content/board/board_list.html',
     controller:'BoardController'
@@ -40,6 +43,9 @@ app.config(function($routeProvider, $locationProvider){
   .when('/board_write',{
     templateUrl: './public/views/content/board/board_write.html',
     controller:'WriteController'
+  })
+  .when('/page_tmon',{
+    templateUrl: './public/views/content/page/page_tmon.html'
   })
   .otherwise({
         redirectTo: '/home'
