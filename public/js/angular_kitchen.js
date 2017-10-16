@@ -32,6 +32,9 @@ app.config(function($routeProvider, $locationProvider){
   .when('/algolithm_jump',{
     templateUrl: './public/views/content/algolithm/algolithm_jump.html'
   })
+  .when('/algolithm_bestSet',{
+    templateUrl: './public/views/content/algolithm/algolithm_bestSet.html'
+  })
   .when('/algolithm_expressions',{
     templateUrl: './public/views/content/algolithm/algolithm_expressions.html'
   })
