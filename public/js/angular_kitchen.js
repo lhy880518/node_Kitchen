@@ -32,6 +32,9 @@ app.config(function($routeProvider, $locationProvider){
   .when('/algolithm_jump',{
     templateUrl: './public/views/content/algolithm/algolithm_jump.html'
   })
+  .when('/algolithm_expressions',{
+    templateUrl: './public/views/content/algolithm/algolithm_expressions.html'
+  })
   .when('/board_list',{
     templateUrl: './public/views/content/board/board_list.html',
     controller:'BoardController'
