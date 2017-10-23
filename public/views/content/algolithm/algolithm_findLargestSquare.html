@@ -1,0 +1,135 @@
+<div>
+  <div>
+    <h1>6. 가장 큰 정사각형 찾기</h1>
+    <p class="lead" >
+    </p>
+    <h3><strong>1. 문제(출처 : <a href="https://programmers.co.kr/learn/challenge_codes/190">https://programmers.co.kr/learn/challenge_codes/190</a>)</strong></h3>
+    <p style="text-indent: 15px;">O와 X로 채워진 표가 있습니다. 표 1칸은 1 x 1 의 정사각형으로 이루어져 있습니다.</p>
+    <p style="text-indent: 15px;">표에서 O로 이루어진 가장 큰 정사각형을 찾아 넓이를 반환하는 findLargestSquare 함수를 완성하세요. 예를 들어</p>
+    <table class="table"><thead><tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead><tbody><tr>
+<td>X</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+<td>X</td>
+</tr>
+<tr>
+<td>X</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody></table>
+    <p style="text-indent: 15px;">가 있다면 정답은</p>
+    <table class="table"><thead><tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead><tbody><tr>
+<td>X</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+<td>X</td>
+</tr>
+<tr>
+<td>X</td>
+<td>O</td>
+<td><code>O</code></td>
+<td><code>O</code></td>
+<td><code>O</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td><code>O</code></td>
+<td><code>O</code></td>
+<td><code>O</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td><code>O</code></td>
+<td><code>O</code></td>
+<td><code>O</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody></table>
+    <p style="text-indent: 15px;">가 되며 넓이는 9가 되므로 9를 반환해 주면 됩니다.</p>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">function</span> findLargestSquare(board)
+{
+	<span style="color: #008800; font-weight: bold">var</span> answer <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+
+	<span style="color: #008800; font-weight: bold">return</span> answer;
+}
+
+<span style="color: #888888">//아래 코드는 테스트를 위한 출력 코드 입니다.</span>
+<span style="color: #008800; font-weight: bold">var</span> testBoard <span style="color: #333333">=</span> [[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>],[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>],[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>],[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;O&#39;</span>],[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>]];
+console.log(findLargestSquare(testBoard));
+</pre></div>
+
+
+    <p>&nbsp;</p>
+    <h3><strong>2. 나의 풀이</strong></h3>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">function</span> findLargestSquare(board)
+{
+  <span style="color: #008800; font-weight: bold">var</span> maxlength <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+  <span style="color: #888888">//1,1부터 탐색을 시작하여 왼쪽, 위쪽, 왼쪽위가 모두 1인 아이들의 중에서 최소값+1로 값을 채운다</span>
+  <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #008800; font-weight: bold">var</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span> ; i <span style="color: #333333">&lt;</span> board.length ; i<span style="color: #333333">++</span>){
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #008800; font-weight: bold">var</span> j<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span> ; j <span style="color: #333333">&lt;</span> board[<span style="color: #0000DD; font-weight: bold">0</span>].length ; j<span style="color: #333333">++</span>){
+      board[i][j] <span style="color: #333333">=</span> board[i][j]<span style="color: #333333">===</span><span style="background-color: #fff0f0">&#39;O&#39;</span> <span style="color: #333333">?</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+      <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">&amp;&amp;</span> j <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">&amp;&amp;</span> board[i][j] <span style="color: #333333">===</span> <span style="color: #0000DD; font-weight: bold">1</span>){
+        board[i][j] <span style="color: #333333">=</span> <span style="color: #007020">Math</span>.min(board[i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>][j<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>],board[i][j<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>],board[i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>][j]) <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+      }
+      maxlength <span style="color: #333333">=</span> maxlength <span style="color: #333333">&lt;</span> board[i][j] <span style="color: #333333">?</span> board[i][j] <span style="color: #333333">:</span> maxlength;
+    }
+  }
+	<span style="color: #008800; font-weight: bold">return</span> maxlength <span style="color: #333333">*</span> maxlength;
+}
+
+<span style="color: #888888">//아래 코드는 테스트를 위한 출력 코드 입니다.</span>
+<span style="color: #888888">//var testBoard = [[&#39;X&#39;,&#39;O&#39;,&#39;O&#39;,&#39;O&#39;,&#39;X&#39;],[&#39;X&#39;,&#39;O&#39;,&#39;O&#39;,&#39;O&#39;,&#39;O&#39;],[&#39;X&#39;,&#39;X&#39;,&#39;O&#39;,&#39;O&#39;,&#39;O&#39;],[&#39;X&#39;,&#39;X&#39;,&#39;O&#39;,&#39;O&#39;,&#39;O&#39;],[&#39;X&#39;,&#39;X&#39;,&#39;X&#39;,&#39;X&#39;,&#39;X&#39;]];</span>
+<span style="color: #008800; font-weight: bold">var</span> testBoard <span style="color: #333333">=</span> [[<span style="background-color: #fff0f0">&#39;O&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>],[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>],[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>],[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>],[<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>,<span style="background-color: #fff0f0">&#39;X&#39;</span>]];
+console.log(findLargestSquare(testBoard));
+</pre></div>
+
+  </div>
+</div>

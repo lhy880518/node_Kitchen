@@ -38,6 +38,12 @@ app.config(function($routeProvider, $locationProvider){
   .when('/algolithm_expressions',{
     templateUrl: './public/views/content/algolithm/algolithm_expressions.html'
   })
+  .when('/algolithm_findLargestSquare',{
+    templateUrl: './public/views/content/algolithm/algolithm_findLargestSquare.html'
+  })
+  .when('/algolithm_hopscotch',{
+    templateUrl: './public/views/content/algolithm/algolithm_hopscotch.html'
+  })
   .when('/board_list',{
     templateUrl: './public/views/content/board/board_list.html',
     controller:'BoardController'
