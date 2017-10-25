@@ -44,6 +44,9 @@ app.config(function($routeProvider, $locationProvider){
   .when('/algolithm_hopscotch',{
     templateUrl: './public/views/content/algolithm/algolithm_hopscotch.html'
   })
+  .when('/update_20171025',{
+    templateUrl: './public/views/content/updatelist/update_20171025.html'
+  })
   .when('/board_list',{
     templateUrl: './public/views/content/board/board_list.html',
     controller:'BoardController'
@@ -90,18 +93,31 @@ app.controller('AngularDetailController', function($scope, $http){
   $http.get('/angular_detail').then(function(data){
   });
 });
-app.controller('AlgolithmCeasarController', function($scope, $http){
-
-});
 
 
-app.controller('BoardController', function($scope, $http){
-  $http.get('/board_list').then(function(data){
-    $scope.boards = data.data;
-    var pageindex = Math.ceil($scope.boards.length/5);
-    $scope.pageidx = page;
+
+app.controller('BoardController', function($scope, $http, $location){
+  //http.get 통신을 통하여 route.js에 있는 board_list를 호출하여 mongodb에 있는 값을 가지고 옵니다.board
+  $http.get('/board_list').then(function(board){
+    $scope.boards = board.data;
+
+    //게시판 페이징 처리를 위한 선언
+    //var pageindex = Math.ceil($scope.boards.length/5);
+    //$scope.pageidx = page;
   });
+
+  //리스트 페이지에서 삭제 버튼 클릭 시 호출되는 함수 입니다.
+  $scope.delboard = function(selectedId){
+    //http.delete를 통하여 route.js에 있는 /board/delete/:_id 를 호출하여 데이터 삭제 후 function(result)로 진입합니다.
+    $http.delete('/board/delete/'+selectedId).then(function(result){
+      //그 후 다시 리스트를 구해와서 boards에 게시물 삭제 후 현황을 노출시킵니다.
+      $http.get('/board_list').then(function(data){
+        $scope.boards = data.data;
+      });
+    });
+  };
 });
+
 
 app.controller('WriteController', function($scope, $http, $location){
   $scope.submitBoard = function(board){

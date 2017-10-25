@@ -12,7 +12,7 @@
     <p style="text-indent: 15px;">5 6 7 8</p>
     <p style="text-indent: 15px;">4 3 2 1</p>
     <p style="text-indent: 15px;">의 땅이 있다면, 영희는 각 줄에서 (5), (7), (4) 땅을 밟아 16점을 최고점으로 받을 수 있으며, hopscotch 함수에서는 16을 반환해주면 됩니다.</p>
-    <p style="text-indent: 15px;">(3시간동안 고민을하는데 .. 이게 머리에 잘 안그려진다 돌것네)</p>
+    <p style="text-indent: 15px;">(누적연산과 Math.max(...temp)를 기억할것)</p>
     <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">function</span> hopscotch(board, size) {
 	<span style="color: #008800; font-weight: bold">var</span> result <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
 	<span style="color: #888888">// 함수를 완성하세요.</span>
@@ -29,6 +29,37 @@ console.log(hopscotch(board, <span style="color: #0000DD; font-weight: bold">3</
 
     <p>&nbsp;</p>
     <h3><strong>2. 나의 풀이</strong></h3>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">function</span> hopscotch(board, size) {
+    <span style="color: #008800; font-weight: bold">var</span> result <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+    <span style="color: #888888">// 함수를 완성하세요.</span>
+  <span style="color: #008800; font-weight: bold">var</span> temp;
+  <span style="color: #888888">//구하고자 하는건 최고점수</span>
+  <span style="color: #888888">//영희의 2번째 계단이 5라면 최대로 나올 수 있는 점수는 윗칸에서 1을 제외한 최대값을 더한 10</span>
+  <span style="color: #888888">//영희의 2번째 계단이 6라면 최대로 나올 수 있는 점수는 윗칸에서 2을 제외한 최대값을 더한 11</span>
+  <span style="color: #888888">//영희의 2번째 계단이 7라면 최대로 나올 수 있는 점수는 윗칸에서 3을 제외한 최대값을 더한 12</span>
+  <span style="color: #888888">//영희의 2번째 계단이 8라면 최대로 나올 수 있는 점수는 윗칸에서 5을 제외한 최대값을 더한 11</span>
+  <span style="color: #888888">//두번째 까지에서의 최대값은 12 이걸 계속해서 적용한다</span>
+
+  <span style="color: #008800; font-weight: bold">for</span> ( <span style="color: #008800; font-weight: bold">var</span> i<span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>; i<span style="color: #333333">&lt;</span>board.length; i<span style="color: #333333">++</span>){
+   <span style="color: #008800; font-weight: bold">for</span>( <span style="color: #008800; font-weight: bold">var</span> j<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>; j<span style="color: #333333">&lt;</span>board[<span style="color: #0000DD; font-weight: bold">0</span>].length; j<span style="color: #333333">++</span>){
+     temp <span style="color: #333333">=</span> board[i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>].slice();
+     temp[j] <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+     <span style="color: #888888">//출처 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/max</span>
+     <span style="color: #888888">//spread operator이 함수를 사용하면 배열의 숫자들 중 가장 큰 숫자를 쉽게 얻을 수 있습니다.</span>
+     <span style="color: #888888">//전개 연산자 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_operator</span>
+     board[i][j] <span style="color: #333333">+=</span> <span style="color: #007020">Math</span>.max(...temp);
+   }
+  }
+    result <span style="color: #333333">=</span> <span style="color: #007020">Math</span>.max(...board[board.length<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]);
+    <span style="color: #008800; font-weight: bold">return</span> result;
+
+}
+
+ <span style="color: #888888">//아래는 테스트로 출력해 보기 위한 코드입니다.</span>
+<span style="color: #888888">//var board = [[6,6,8,8],[2,10,6,6],[9,0,2,8],[0,1,3,8],[3,5,5,0],[3,7,0,5],[6,0,6,6],[7,7,10,0],[3,8,0,10],[9,5,8,0]];</span>
+<span style="color: #008800; font-weight: bold">var</span> board <span style="color: #333333">=</span> [[ <span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0000DD; font-weight: bold">2</span>, <span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #0000DD; font-weight: bold">5</span> ], [ <span style="color: #0000DD; font-weight: bold">5</span>, <span style="color: #0000DD; font-weight: bold">6</span>, <span style="color: #0000DD; font-weight: bold">7</span>, <span style="color: #0000DD; font-weight: bold">8</span> ], [ <span style="color: #0000DD; font-weight: bold">4</span>, <span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #0000DD; font-weight: bold">2</span>, <span style="color: #0000DD; font-weight: bold">1</span>]];
+console.log(hopscotch(board, <span style="color: #0000DD; font-weight: bold">3</span>));
+</pre></div>
 
 
   </div>

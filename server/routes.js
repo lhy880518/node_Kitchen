@@ -112,5 +112,12 @@ module.exports = function(app){
     });
   });
 
+  router.delete('/board/delete/:_id', function(req, res){
+    models.board.remove({_id : req.params._id}, function(err){
+      if (err) return handleError(err);
+      res.json({success: true, msg: 'Board deleted.'});
+    });
+  });
+
   app.use(router);
 };

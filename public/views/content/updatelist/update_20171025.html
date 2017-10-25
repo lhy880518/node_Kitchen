@@ -1,0 +1,30 @@
+<div>
+  <div>
+    <h1>20171025 내역</h1>
+    <p class="lead" >
+    </p>
+    <h3><strong>1. 업데이트 내역 및 주요내용</strong></h3>
+    <p style="text-indent: 15px;">오늘은 게시판 페이지에 삭제 기능을 추가 하였다.</p>
+    <p style="text-indent: 15px;">애 먹었다기 보다 시간 다 잡아 먹은부분은 아래 부분이다.</p>
+    <p style="text-indent: 15px;"><img src="/public/img/updatelist/20171025_board_list.png" ></p>
+    <p style="text-indent: 15px;">라디오 버튼을 추가 하는데 그냥 ng-model="$parent.selectRd"라고 하면 안먹힌다.</p>
+    <p style="text-indent: 15px;">이유를 모르겠어 가지고 stackoverflow에 찾아보니 나랑 비슷한 사람이 있더라</p>
+    <p style="text-indent: 15px;">어떤분이 답변을 단거를 보니 ng-repeat create a child scope, so you have to bind to the $parent: 라고 달아주셨다.</p>
+    <p style="text-indent: 15px;">참고하여서 위와같이 ng-model="$parent.selectRd" ng-value="board._id" 하고 아래 쪽처럼 ng-click="delboard(selectRd)"버튼 호출</p>
+    <p>&nbsp;</p>
+    <p style="text-indent: 15px;">버튼 호출 내용은 아래와 같다.</p>
+    <p style="text-indent: 15px;"><img src="/public/img/updatelist/20171025_angular_kitchen.png" ></p>
+    <p>&nbsp;</p>
+    <p style="text-indent: 15px;">그리고 $http.delete의 내용은 아래와 같다.</p>
+    <p style="text-indent: 15px;"><img src="/public/img/updatelist/20171025_routes.png" ></p>
+    <p style="text-indent: 15px;">res.json({success: true, msg: 'Board deleted.'});으로 리턴한 객체를 result로 확인하고 싶다면. result.data.success로 확인 할 수 있다.</p>
+
+    <p>&nbsp;</p>
+    <h3><strong>2. 앞으로 과제</strong></h3>
+    <p style="text-indent: 15px;">1. 게시판 파일 업로드 기능 추가</p>
+    <p style="text-indent: 15px;">2. 카테고리 지정 후 angular route측 처리 말끔하게 수정</p>
+    <p style="text-indent: 15px;">3. 로그인 및 권한 개념추가</p>
+    <p style="text-indent: 15px;">4. todo예제 추가(react, angularjs등등)</p>
+
+  </div>
+</div>
