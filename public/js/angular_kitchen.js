@@ -23,6 +23,9 @@ app.config(function($routeProvider, $locationProvider){
     templateUrl: './public/views/content/material/angular_detail.html',
     controller:'AngularDetailController'
   })
+  .when('/react_detail',{
+    templateUrl: './public/views/content/material/react_detail.html'
+  })
   .when('/algolithm_ceasar',{
     templateUrl: './public/views/content/algolithm/algolithm_ceasar.html'
   })
@@ -46,6 +49,9 @@ app.config(function($routeProvider, $locationProvider){
   })
   .when('/update_20171025',{
     templateUrl: './public/views/content/updatelist/update_20171025.html'
+  })
+  .when('/update_20171026',{
+    templateUrl: './public/views/content/updatelist/update_20171026.html'
   })
   .when('/board_list',{
     templateUrl: './public/views/content/board/board_list.html',
